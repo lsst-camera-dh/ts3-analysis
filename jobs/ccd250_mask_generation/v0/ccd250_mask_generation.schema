@@ -1,0 +1,5 @@
+# -*- python -*-
+{
+    'schema_name' : 'ccd250_mask_generation',
+    'schema_version' : 0,
+}

@@ -1,0 +1,5 @@
+# -*- python -*-
+{
+    'schema_name' : 'ts3_spot',
+    'schema_version' : 0,
+}

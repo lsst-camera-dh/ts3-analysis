@@ -1,0 +1,5 @@
+# -*- python -*-
+{
+    'schema_name' : 'prnu',
+    'schema_version' : 0,
+}

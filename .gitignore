@@ -1,0 +1,5 @@
+jobHarness
+*~
+*.pyc
+*.fits
+.lcatr.cfg

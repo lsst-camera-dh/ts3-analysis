@@ -1,0 +1,21 @@
+# -*- python -*-
+{
+    'schema_name' : 'read_noise',
+    'schema_version' : 0,
+    'AMP01_READ_NOISE' : float,
+    'AMP02_READ_NOISE' : float,
+    'AMP03_READ_NOISE' : float,
+    'AMP04_READ_NOISE' : float,
+    'AMP05_READ_NOISE' : float,
+    'AMP06_READ_NOISE' : float,
+    'AMP07_READ_NOISE' : float,
+    'AMP08_READ_NOISE' : float,
+    'AMP09_READ_NOISE' : float,
+    'AMP10_READ_NOISE' : float,
+    'AMP11_READ_NOISE' : float,
+    'AMP12_READ_NOISE' : float,
+    'AMP13_READ_NOISE' : float,
+    'AMP14_READ_NOISE' : float,
+    'AMP15_READ_NOISE' : float,
+    'AMP16_READ_NOISE' : float
+}

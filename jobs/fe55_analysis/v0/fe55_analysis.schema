@@ -1,0 +1,21 @@
+# -*- python -*-
+{
+    'schema_name' : 'fe55_analysis',
+    'schema_version' : 0,
+    'AMP01_GAIN' : float,
+    'AMP02_GAIN' : float,
+    'AMP03_GAIN' : float,
+    'AMP04_GAIN' : float,
+    'AMP05_GAIN' : float,
+    'AMP06_GAIN' : float,
+    'AMP07_GAIN' : float,
+    'AMP08_GAIN' : float,
+    'AMP09_GAIN' : float,
+    'AMP10_GAIN' : float,
+    'AMP11_GAIN' : float,
+    'AMP12_GAIN' : float,
+    'AMP13_GAIN' : float,
+    'AMP14_GAIN' : float,
+    'AMP15_GAIN' : float,
+    'AMP16_GAIN' : float
+}

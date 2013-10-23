@@ -1,0 +1,5 @@
+# -*- python -*-
+{
+    'schema_name' : 'ts3_dark_files',
+    'schema_version' : 0,
+}

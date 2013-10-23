@@ -1,0 +1,5 @@
+# -*- python -*-
+{
+    'schema_name' : 'ts3_fe55_data',
+    'schema_version' : 0,
+}

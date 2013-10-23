@@ -1,0 +1,5 @@
+# -*- python -*-
+{
+    'schema_name' : 'ts3_system_xtalk',
+    'schema_version' : 0,
+}
