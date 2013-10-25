@@ -6,13 +6,12 @@ import lsst.eotest.image_utils as imutils
 import lcatr.schema
 
 read_noise_results = glob.glob('*_read_noise_results.txt')[0]
-rn = {}
+results = []
 for line in open(read_noise_results):
     data = line.strip().split()
     amp, read_noise = int(data[0]), float(data[1])
-    rn['AMP%02i_READ_NOISE' % amp] = read_noise
-    
-results = [lcatr.schema.valid(lcatr.schema.get('read_noise'), **rn)]
+    results.append(lcatr.schema.valid(lcatr.schema.get('read_noise'),
+                                      amp=amp, read_noise=read_noise))
 
 files = glob.glob('*read_noise*.fits')
 files.append(read_noise_results)

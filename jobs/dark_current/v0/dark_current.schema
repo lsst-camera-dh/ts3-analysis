@@ -2,20 +2,6 @@
 {
     'schema_name' : 'dark_current',
     'schema_version' : 0,
-    'AMP01_DARK95' : float,
-    'AMP02_DARK95' : float,
-    'AMP03_DARK95' : float,
-    'AMP04_DARK95' : float,
-    'AMP05_DARK95' : float,
-    'AMP06_DARK95' : float,
-    'AMP07_DARK95' : float,
-    'AMP08_DARK95' : float,
-    'AMP09_DARK95' : float,
-    'AMP10_DARK95' : float,
-    'AMP11_DARK95' : float,
-    'AMP12_DARK95' : float,
-    'AMP13_DARK95' : float,
-    'AMP14_DARK95' : float,
-    'AMP15_DARK95' : float,
-    'AMP16_DARK95' : float
+    'amp' : int,
+    'dark_current_95CL' : float
 }
