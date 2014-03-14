@@ -2,7 +2,7 @@
 import glob
 import lcatr.schema
 
-trap_file = glob.glob('*traps.txt')[0]
+trap_file = glob.glob('*_traps.fits')[0]
 
 results = [lcatr.schema.fileref.make(trap_file)]
 

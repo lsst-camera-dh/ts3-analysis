@@ -8,17 +8,14 @@ from lcatr.harness.helpers import dependency_glob
 trap_file = dependency_glob('*_trap_ppump*.fits')[0]
 mask_files = dependency_glob('*_mask.fits')
 
-def segment_gains():
-    gain_file = pyfits.open(dependency_glob('*_gains.fits')[0])
-    gains = {}
-    for amp in imutils.allAmps:
-        gains[amp] = gain_file[0].header['GAIN%s' % imutils.channelIds[amp]]
-    return gains
-
-gains = segment_gains()
-
 # Infer the sensor_id from the first dark filename as per LCA-10140.
 sensor_id = os.path.basename(trap_file).split('_')[0]
+
+gain_file = dependency_glob('%s_eotest_results.fits' % sensor_id)[0]
+gains = sensorTest.EOTestResults(gain_file)['GAIN']
+
+# Handle annoying off-by-one issue in amplifier numbering:
+gains = dict([(amp, gains[amp-1]) for amp in range(1, 17)])
 
 task = sensorTest.TrapTask()
 task.run(sensor_id, trap_file, mask_files, gains)

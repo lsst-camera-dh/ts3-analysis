@@ -2,7 +2,7 @@
 import glob
 import lcatr.schema
 
-xtalk_file = glob.glob('*xtalk_matrix.txt')[0]
+xtalk_file = glob.glob('*xtalk_matrix.fits')[0]
 
 results = [lcatr.schema.fileref.make(xtalk_file)]
 

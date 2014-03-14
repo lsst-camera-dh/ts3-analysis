@@ -4,6 +4,8 @@ import pyfits
 import lsst.eotest.image_utils as imutils
 import lcatr.schema
 
+eotest_results = glob.glob('*eotest_results.fits')[0]
+
 bp_map_file = glob.glob('*bright_pixel_map.fits')[0]
 bp_map = pyfits.open(bp_map_file)
 results = []
@@ -14,6 +16,7 @@ for amp in imutils.allAmps:
                                       bright_columns=bp_map[amp].header['NBRTCOL']))
 
 results.append(lcatr.schema.fileref.make(bp_map_file))
+results.append(lcatr.schema.fileref.make(eotest_results))
 
 lcatr.schema.write_file(results)
 lcatr.schema.validate_file()

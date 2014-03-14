@@ -2,7 +2,7 @@
 import glob
 import lcatr.schema
 
-cte_file = glob.glob('*cti_values.txt')[0]
+cte_file = glob.glob('*eotest_results.fits')[0]
 
 results = [lcatr.schema.fileref.make(cte_file)]
 
