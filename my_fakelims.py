@@ -292,12 +292,10 @@ class FakeLimsHandler(BaseHTTPRequestHandler):
 
 if __name__ == '__main__':
     import sys
-    try:
-        exec('from %s import traveler_data' % sys.argv[1].split('.py')[0])
-        lims_commands = FakeLimsCommands(traveler_data=traveler_data)
-        print traveler_data
-    except:
-        lims_commands = FakeLimsCommands()
+
+    exec('from %s import traveler_data' % sys.argv[1].split('.py')[0])
+    lims_commands = FakeLimsCommands(traveler_data=traveler_data)
+    print traveler_data
 
     try:
         server = HTTPServer(('', 9876), FakeLimsHandler)

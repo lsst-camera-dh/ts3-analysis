@@ -1,0 +1,5 @@
+# -*- python -*-
+{
+    'schema_name' : 'ts3_flat_pairs',
+    'schema_version' : 0,
+}

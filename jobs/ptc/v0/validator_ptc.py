@@ -2,9 +2,9 @@
 import glob
 import lcatr.schema
 
-cte_file = glob.glob('*_eotest_results_cte.fits')[0]
+ptc_results = glob.glob('*_ptc.fits')[0]
 
-results = [lcatr.schema.fileref.make(cte_file)]
+results = [lcatr.schema.fileref.make(ptc_results)]
 
 lcatr.schema.write_file(results)
 lcatr.schema.validate_file()
