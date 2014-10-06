@@ -6,7 +6,7 @@ import lcatr.schema
 
 results = []
 
-dc_file = glob.glob('*eotest_results_dark_current.fits')[0]
+dc_file = glob.glob('*eotest_results.fits')[0]
 
 dc_map_file = glob.glob('*dark_current_map.fits')[0]
 dc_map = pyfits.open(dc_map_file)

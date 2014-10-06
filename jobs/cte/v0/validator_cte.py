@@ -2,7 +2,7 @@
 import glob
 import lcatr.schema
 
-cte_file = glob.glob('*_eotest_results_cte.fits')[0]
+cte_file = glob.glob('*_eotest_results.fits')[0]
 
 results = [lcatr.schema.fileref.make(cte_file)]
 

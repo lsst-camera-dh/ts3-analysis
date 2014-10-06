@@ -4,7 +4,7 @@ import pyfits
 import lsst.eotest.image_utils as imutils
 import lcatr.schema
 
-eotest_results = glob.glob('*eotest_results_bp.fits')[0]
+eotest_results = glob.glob('*eotest_results.fits')[0]
 
 bp_mask_file = glob.glob('*bright_pixel_mask.fits')[0]
 bp_mask = pyfits.open(bp_mask_file)

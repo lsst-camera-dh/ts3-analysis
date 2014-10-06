@@ -2,7 +2,7 @@
 import glob
 import lcatr.schema
 
-results_file = glob.glob('*_eotest_results_flat_pairs.fits')[0]
+results_file = glob.glob('*_eotest_results.fits')[0]
 det_resp_data = glob.glob('*_det_response.fits')[0]
 
 results = [lcatr.schema.fileref.make(x) for x in (results_file, 

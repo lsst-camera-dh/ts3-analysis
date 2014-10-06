@@ -11,7 +11,7 @@ import lcatr.schema
 # glob the output files from producer script. (If the sensor_id were
 # available, then the output filenames could be used explicitly.)
 #
-gain_file = glob.glob('*_eotest_results_fe55.fits')[0]
+gain_file = glob.glob('*_eotest_results.fits')[0]
 psf_results = glob.glob('*_psf_results*.fits')[0]
 rolloff_mask = glob.glob('*_rolloff_defects_mask.fits')[0]
 

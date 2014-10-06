@@ -8,7 +8,7 @@ import lcatr.schema
 
 results = []
 
-read_noise_file = glob.glob('*_eotest_results_read_noise.fits')[0]
+read_noise_file = glob.glob('*_eotest_results.fits')[0]
 read_noise = sensorTest.EOTestResults(read_noise_file)['READ_NOISE']
 for amp in read_noise:
     results.append(lcatr.schema.valid(lcatr.schema.get('read_noise'),
