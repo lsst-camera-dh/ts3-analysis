@@ -54,6 +54,7 @@ pylab.savefig('%s_xtalk.png' % sensor_id)
 
 # Flat fields at wavelengths nearest the centers of the standard bands
 wl_files = dependency_glob('*_lambda_*.fits', jobname='ts3_lambda')
-plots.flat_fields(os.path.split(wl_files[0])[0], savefigs=True)
+plots.flat_fields(os.path.split(wl_files[0])[0])
+pylab.savefig('%s_flat_fields.png' % sensor_id)
 
 plots.latex_table('%s_results_table.tex' % sensor_id)
