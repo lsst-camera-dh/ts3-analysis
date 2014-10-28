@@ -9,6 +9,7 @@ superflat_files = dependency_glob('*_superflat*.fits', jobname='ts3_superflat')
 mask_files = dependency_glob('*_mask.fits')
 
 print superflat_files
+print mask_files
 sys.stdout.flush()
 
 # Infer the sensor_id from the first dark filename as per LCA-10140.

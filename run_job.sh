@@ -12,6 +12,7 @@
 
 /nfs/farm/g/lsst/u1/jobHarness/jh_inst/bin/lcatr-harness --job=fe55_analysis
 /nfs/farm/g/lsst/u1/jobHarness/jh_inst/bin/lcatr-harness --job=bright_pixels
+/nfs/farm/g/lsst/u1/jobHarness/jh_inst/bin/lcatr-harness --job=dark_pixels
 /nfs/farm/g/lsst/u1/jobHarness/jh_inst/bin/lcatr-harness --job=read_noise
 /nfs/farm/g/lsst/u1/jobHarness/jh_inst/bin/lcatr-harness --job=dark_current
 /nfs/farm/g/lsst/u1/jobHarness/jh_inst/bin/lcatr-harness --job=cte

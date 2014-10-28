@@ -8,7 +8,7 @@ results = []
 
 dc_file = glob.glob('*eotest_results.fits')[0]
 
-dc_map_file = glob.glob('*dark_current_map.fits')[0]
+dc_map_file = glob.glob('*median_dark_current.fits')[0]
 dc_map = pyfits.open(dc_map_file)
 for amp in imutils.allAmps:
     dark_current_95CL = dc_map[0].header['DARK95%s' % imutils.channelIds[amp]]
