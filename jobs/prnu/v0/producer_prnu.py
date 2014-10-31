@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
+import shutil
 import pyfits
 import lsst.eotest.image_utils as imutils
 import lsst.eotest.sensor as sensorTest
@@ -25,5 +26,7 @@ gains = sensorTest.EOTestResults(gain_file)['GAIN']
 # Handle annoying off-by-one issue in amplifier numbering:
 gains = dict([(amp, gains[amp-1]) for amp in range(1, 17)])
 
+# Make a local copy to fill with task results.
+shutil.copy(gain_file, os.path.basename(gain_file))
 task = sensorTest.PrnuTask()
 task.run(sensor_id, lambda_files, mask_files, gains, correction_image)

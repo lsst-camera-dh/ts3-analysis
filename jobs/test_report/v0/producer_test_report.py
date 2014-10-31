@@ -9,6 +9,9 @@ from lcatr.harness.helpers import dependency_glob
 results_file = dependency_glob('*_eotest_results.fits',
                                jobname='flat_pairs')[0]
 
+#results_file = dependency_glob('*_eotest_results.fits',
+#                               jobname='fe55_analysis')[0]
+
 # Infer the sensor_id from the results filename.
 sensor_id = os.path.basename(results_file).split('_')[0]
 
@@ -61,4 +64,4 @@ wl_files = dependency_glob('*_lambda_*.fits', jobname='ts3_lambda')
 plots.flat_fields(os.path.split(wl_files[0])[0])
 pylab.savefig('%s_flat_fields.png' % sensor_id)
 
-plots.latex_table('%s_results_table.tex' % sensor_id)
+plots.latex_tables('%s_results_table.tex' % sensor_id)

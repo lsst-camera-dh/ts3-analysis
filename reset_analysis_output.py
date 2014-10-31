@@ -9,6 +9,7 @@ ccd_id = 'debug'
 
 tasks = ('fe55_analysis',
          'bright_pixels', 
+         'dark_pixels',
          'read_noise',
          'dark_current',
          'cte',
