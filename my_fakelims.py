@@ -21,16 +21,39 @@ import pickle
 #import cPickle as pickle
 import logging
 
-logging.basicConfig(filename='fakelims.log',level=logging.DEBUG)
+logging.basicConfig(filename='fakelims.log', level=logging.DEBUG)
+
+def check_traveler(traveler_data, verbose=True):
+    """
+    Check that the dependencies in the dictionary representation of a
+    fakelims traveler are consistent.
+    """
+    if not isinstance(traveler_data, dict):
+        # Assume this is an python module, so import the traveler_data
+        # dictionary.
+        if verbose:
+            print "Checking %s..." % traveler_data
+        exec('from %s import traveler_data' % traveler_data.split('.py')[0])
+    #
+    # Loop over dependencies for each task and check that the
+    # dependency exists as a task.
+    for keys, values in traveler_data.items():
+        for value in values:
+            # This will raise a KeyError exception if the target task
+            # is missing:
+            traveler_data[value]
+    return traveler_data
 
 class FakeTraveler(object):
     default_traveler = {
         ('example_station_A','v0'): (('example_station_B','v0'),
                                      ('example_ana_A','v0')),
         }
-    def __init__(self, traveler_data = None):
-        if not traveler_data: 
+    def __init__(self, traveler_data=None):
+        if not traveler_data:
+            print "FakeTraveler: Using default_traveler"
             traveler_data = FakeTraveler.default_traveler
+        traveler_data = check_traveler(traveler_data)
         self.traveler = traveler_data
         deps = collections.defaultdict(list)
         for parent, daughters in traveler_data.iteritems():
@@ -39,6 +62,7 @@ class FakeTraveler(object):
                 deps[d].append(parent)
         self.dependencies = deps
         return
+
     def __str__(self):
         return '<FakeTraveler traveler="%s" dependencies="%s">' % \
             (self.traveler, self.dependencies)
@@ -292,10 +316,7 @@ class FakeLimsHandler(BaseHTTPRequestHandler):
 
 if __name__ == '__main__':
     import sys
-
-    exec('from %s import traveler_data' % sys.argv[1].split('.py')[0])
-    lims_commands = FakeLimsCommands(traveler_data=traveler_data)
-    print traveler_data
+    lims_commands = FakeLimsCommands(traveler_data=sys.argv[1])
 
     try:
         server = HTTPServer(('', 9876), FakeLimsHandler)

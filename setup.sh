@@ -14,6 +14,7 @@ setup scipy
 
 PS1="[eotest]$ "
 
-export LCATR_LIMS_URL="http://localhost:9876/"
-export PYTHONPATH=${PYTHONPATH}:/nfs/slac/g/ki/ki18/jchiang/LSST/JH/jh_modules
-export VIRTUAL_ENV=/nfs/slac/g/ki/ki18/jchiang/LSST/JH/virtual_env
+#export PYTHONPATH=${PYTHONPATH}:/nfs/slac/g/ki/ki18/jchiang/LSST/JH/jh_modules
+#export VIRTUAL_ENV=/nfs/slac/g/ki/ki18/jchiang/LSST/JH/virtual_env
+
+source /nfs/farm/g/lsst/u1/jobHarness/jh_inst_novirtualenv/bin/jh_setup

@@ -22,6 +22,10 @@ fe55_file = dependency_glob('%s_psf_results*.fits' % sensor_id,
 plots.fe55_dists(fe55_file=fe55_file)
 pylab.savefig('%s_fe55_dists.png' % sensor_id)
 
+# PSF distributions from Fe55 fits
+plots.psf_dists(fe55_file=fe55_file)
+pylab.savefig('%s_psf_dists.png' % sensor_id)
+
 # Photon Transfer Curves
 ptc_file = dependency_glob('%s_ptc.fits' % sensor_id, jobname='ptc')[0]
 plots.ptcs(ptc_file=ptc_file)
