@@ -1,4 +1,4 @@
-eotest_version=0.0.1.0
+eotest_version=0.0.1.1
 harnessedjobs_version=20150707e
 lcatrHarness_version=0.5
 lcatrSchema_version=0.4.3
