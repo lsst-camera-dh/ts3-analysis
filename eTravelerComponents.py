@@ -1,17 +1,32 @@
 from collections import OrderedDict
+from eTravelerDb import eTravelerDb
 
 class Traveler(list):
-    def __init__(self, name, hardwareType, description,
+    def __init__(self, name, hardwareGroup, description,
                  instructions="No instructions",
-                 version="v0"):
+                 version="1", db_info=None, stepPrefix=None):
         super(Traveler, self).__init__()
         self.name = name
-        self.hardwareType = hardwareType
+        self.hardwareGroup = hardwareGroup
         self.description = description
         self.instructions = instructions
         self.version = version
+        self.dbObject = None
+        if db_info is not None:
+            self.dbObject = eTravelerDb(db_info)
+        self.stepPrefix = stepPrefix
     def stepFactory(self, name, **kwds):
-        process_step = ProcessStep(name, **kwds)
+        if self.stepPrefix is not None:
+            candidateName =  '_'.join((self.stepPrefix, name))
+        else:
+            candidateName = name
+        process_step = ProcessStep(candidateName, **kwds)
+        if self.dbObject is not None:
+            processInfo = self.dbObject.processInfo(candidateName)
+            if processInfo:
+                process_step.set_isRefObject()
+                print "process step '%s' already exists" % candidateName
+                print "process info:", processInfo
         self.append(process_step)
         return process_step
     def __repr__(self):
@@ -19,7 +34,7 @@ class Traveler(list):
         output.append('%YAML 1.1')
         output.append('---\n')
         output.append('Name: ' + self.name)
-        output.append('HardwareType: ' + self.hardwareType)
+        output.append('HardwareGroup: ' + self.hardwareGroup)
         output.append('Description: ' + self.description)
         output.append('InstructionsURL: ' + self.instructions)
         output.append('Version: ' + self.version)
@@ -53,13 +68,14 @@ class ProcessStep(object):
         self.jh = jh
         self.level = level
         self.pre_reqs = []
+        self.isRefObject = False
+    def set_isRefObject(self):
+        self.isRefObject = True
     def fakelims_id(self):
         return '%s' % self.name, '%s' % self.version
-    def add_pre_req(self, pre_req):
-        self.pre_reqs.append(pre_req)
-    def add_pre_reqs(self, pre_reqs):
+    def add_pre_reqs(self, *pre_reqs):
         for item in pre_reqs:
-            self.add_pre_req(item)
+            self.pre_reqs.append(item)
     def _pre_req_str(self):
         offset = self._offset*self.level
         output = []
