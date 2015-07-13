@@ -1,4 +1,4 @@
-eotest_version=0.0.0.9
+eotest_version=0.0.1.0
 harnessedjobs_version=20150707e
 lcatrHarness_version=0.5
 lcatrSchema_version=0.4.3
@@ -23,11 +23,11 @@ cd ${inst_dir}
 stack_dir=/nfs/farm/g/lsst/u1/software/DMstack/Winter2015/redhat6-x86_64-64bit-gcc44
 source ${stack_dir}/loadLSST.bash
 
-##anaconda_path=/nfs/farm/g/lsst/u1/software/redhat6-x86_64-64bit-gcc44/anaconda/2.0.1/bin
-##export PATH=${anaconda_path}:${PATH}
 #
-#stack_dir=/nfs/farm/g/lsst/u1/software/redhat6-x86_64-64bit-gcc44/DMstack/Winter2014
-#source ${stack_dir}/loadLSST.sh
+# Add a local ups_db path to declare eotest with eups
+#
+mkdir -p ${inst_dir}/eups/ups_db
+export EUPS_PATH=${inst_dir}/eups:${EUPS_PATH}
 
 #
 # Install lcatr packages in ${inst_dir}/lib
@@ -70,8 +70,8 @@ tar xzf ${harnessedjobs_version}.tar.gz
 ln -sf ${inst_dir}/harnessed-jobs-${harnessedjobs_version}/SLAC/* ${inst_dir}/share
 
 echo export STACK_DIR=${stack_dir} > setup.sh
-#echo source \${STACK_DIR}/loadLSST.sh >> setup.sh
 echo source \${STACK_DIR}/loadLSST.bash >> setup.sh
+echo export EUPS_PATH=${inst_dir}/eups:\${EUPS_PATH} >> setup.sh
 echo setup eotest >> setup.sh
 echo setup mysqlpython >> setup.sh
 echo export INST_DIR=${inst_dir} >> setup.sh
@@ -81,7 +81,6 @@ echo export DATACATPATH=/afs/slac/u/gl/srs/datacat/dev/0.3/lib >> setup.sh
 echo export HARNESSEDJOBSDIR=\${INST_DIR}/harnessed-jobs-${harnessedjobs_version} >> setup.sh
 echo export PYTHONPATH=\${DATACATPATH}:\${HARNESSEDJOBSDIR}/python:\${INST_DIR}/`ls -d lib/python*/site-packages`:\${PYTHONPATH} >> setup.sh
 echo export PATH=\${INST_DIR}/bin:\${PATH} >> setup.sh
-#echo export PATH=\${INST_DIR}/bin:${anaconda_path}:\${PATH} >> setup.sh
 echo export SITENAME=SLAC >> setup.sh
 echo export LCATR_SCHEMA_PATH=\${HARNESSEDJOBSDIR}/schemas:\${LCATR_SCHEMA_PATH} >> setup.sh
 echo export LCATR_DATACATALOG_FOLDER=/LSST/Dev/mirror/SLAC >> setup.sh
